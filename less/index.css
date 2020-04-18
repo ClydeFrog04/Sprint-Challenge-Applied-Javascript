@@ -303,3 +303,7 @@ body {
   width: 100%;
   display: none;
 }
+.carousel .imgVisible {
+  display: inline;
+}
+/*# sourceMappingURL=index.css.map */

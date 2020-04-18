@@ -20,7 +20,6 @@
 
 const carouselContainer = document.querySelector(".carousel-container");
 function Carousel(){
-    console.log("working");
     //declare/initialise vars
     const div = document.createElement("div");
     const leftBtn = document.createElement("div");
@@ -29,6 +28,8 @@ function Carousel(){
     const treeImg = document.createElement("img");
     const turntableImg = document.createElement("img");
     const rightBtn = document.createElement("div");
+    let imgArr = [mountainImg, computerImg, treeImg, turntableImg];
+    let currImgIndex = 0;
 
     //set classes
     div.classList.add("carousel");
@@ -40,6 +41,9 @@ function Carousel(){
     computerImg.setAttribute("src", "./assets/carousel/computer.jpeg");
     treeImg.setAttribute("src", "./assets/carousel/trees.jpeg");
     turntableImg.setAttribute("src", "./assets/carousel/turntable.jpeg");
+
+    //set a default style on the mountain img, it will start as visible
+    mountainImg.style.display = "inline";
 
     //text content
     leftBtn.textContent = "<";
@@ -54,6 +58,22 @@ function Carousel(){
     div.appendChild(rightBtn);
 
     //event listeners
+    leftBtn.addEventListener("click", (event)=>{
+        imgArr[currImgIndex].style.display = "none";
+        currImgIndex--;
+        currImgIndex %= imgArr.length;
+        if(currImgIndex < 0 ) currImgIndex = 3;//because we can't have negative indices
+        console.log(currImgIndex);
+        imgArr[currImgIndex].style.display = "inline";
+    });
+    rightBtn.addEventListener("click", (event)=>{
+        imgArr[currImgIndex].style.display = "none";
+        currImgIndex++;
+        currImgIndex %= imgArr.length;
+        console.log(currImgIndex);
+        imgArr[currImgIndex].style.display = "inline";
+    });
+
 
     return div;
 }
