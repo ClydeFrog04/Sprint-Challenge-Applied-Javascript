@@ -18,7 +18,9 @@
   </div>
 */
 
-function carousel(){
+const carouselContainer = document.querySelector(".carousel-container");
+function Carousel(){
+    console.log("working");
     //declare/initialise vars
     const div = document.createElement("div");
     const leftBtn = document.createElement("div");
@@ -44,8 +46,16 @@ function carousel(){
     rightBtn.textContent = ">";
 
     //hierarchy
+    div.appendChild(leftBtn);
+    div.appendChild(mountainImg);
+    div.appendChild(computerImg);
+    div.appendChild(treeImg);
+    div.appendChild(turntableImg);
+    div.appendChild(rightBtn);
 
     //event listeners
 
     return div;
 }
+
+carouselContainer.appendChild(Carousel());
